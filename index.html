@@ -91,7 +91,7 @@
         font-family: Verdana, Tahoma, sans-serif;
       }
       #hoodies {
-        display: none;
+        display: block;
       }
       #full, #couples, #men, #about-us, #contact-us {
         display: none;
@@ -120,7 +120,7 @@
       }
       .slider {
         position: relative;
-        width: 1300px;
+        width: 1400px;
         height: 300px;
         margin: auto;
         overflow: auto;
@@ -133,13 +133,14 @@
         display: flex;
         gap: 20px;
         scroll-behavior: smooth;
+        overflow-x: hidden;
       }
       .slider-track::-webkit-scrollbar {
         display: none;
       }
       .slide {
         min-width: 250px;
-        width: 600px;
+        width: auto;
         margin-right: 20px;
         text-align: center;
         flex-shrink: 0;
@@ -366,7 +367,7 @@
             .sections1 img, .sections2 img,
             .sections3 img, .sections4 img,
             .sections5 img {
-              width: 60vw;
+              width: 80vw;
             }
             .sections1 button, .sections2 button,
             .sections3 button, .sections4 button,
@@ -823,7 +824,9 @@
           showMsg(`${name} deleted!`)
               }
 
-         let lastScroll = 0
+      
+
+      let lastScroll = 0
       const nav = document.querySelector(".container")
 
       window.addEventListener("scroll", () => {
@@ -840,8 +843,8 @@
         lastScroll = currentScroll
       })
 
-
-        const mainSections = ["menu", "about-us", "contact-us"]
+      
+      const mainSections = ["menu", "about-us", "contact-us"]
 
       const menuSubsections = ["hoodies", "full", "couples", "men"]
 
@@ -878,24 +881,24 @@
         })
           document.getElementById(id).style.display = "block";
 
-      }      
-     
+      }
+
         const sliders =
          document.querySelectorAll(".slider-track")
 
         function slideRight(btn) {
           const track = 
           btn.parentElement.querySelector(".slider-track")
-          track.scrollLeft += 500
+          track.scrollLeft += 300
         }
 
         function slideLeft(btn) {
           const track = 
           btn.parentElement.querySelector(".slider-track")
-          track.scrollLeft -= 500
+          track.scrollLeft -= 300
         }
 
-        let direction = 2
+        let direction = 1
 
         setInterval(() => {
 
@@ -913,7 +916,8 @@
 
           }, 3000)
 
-         function showProduct(sectionClass, id, event) {
+
+          function showProduct(sectionClass, id, event) {
             if(event) event.preventDefault();
 
             document.querySelectorAll(
@@ -937,7 +941,6 @@
        "block";
           }
 
-         
 
 function fakeSignUp() {
   let name = document.getElementById('signup-name').value;
