@@ -120,7 +120,8 @@
       }
       .slider {
         position: relative;
-        width: 1400px;
+        width: 100%;
+        max-width: 1400px;
         height: 300px;
         margin: auto;
         overflow: hidden;
@@ -133,14 +134,14 @@
         display: flex;
         gap: 5px;
         scroll-behavior: smooth;
-        overflow-x: hidden;
+        overflow-x: auto;
       }
       .slider-track::-webkit-scrollbar {
         display: none;
       }
       .slide {
         min-width: 250px;
-        width: 300;
+        width: 300px;
         margin-right: 20px;
         text-align: center;
         flex-shrink: 0;
@@ -210,8 +211,8 @@
         overflow-x: scroll;
         box-sizing: border-box;
         height: 600px;
-        width: 1400px;
-        overflow-y: hidden;
+        width: 100%;
+        max-width: 1400px;
         overflow-x: hidden;
       }
       
