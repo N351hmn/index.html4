@@ -120,7 +120,7 @@
       }
       .slider {
         position: relative;
-        width: 1400px;
+        width: 1000px;
         height: 300px;
         margin: auto;
         overflow: auto;
@@ -746,7 +746,143 @@
 
     <script>
       
-    
+      let cartTotal = 0;
+      let favTotal= 0;
+      let deletedTotal = 0;
+
+      let cartItems = [];
+      let favoriteItems = [];
+
+      function showMsg(msg) {
+        const box = 
+        document.getElementById("notification");
+        if (box) {
+        box.innerText = msg;
+        box.style.display = "block";
+        setTimeout(() => 
+          box.style.display = 
+          "none", 2000);
+      } else { 
+          alert(msg);
+
+      }
+    }
+
+       function addToCart(name, price) {
+        cartItems.push({ name, price});
+        cartTotal = cartItems.reduce((sum, item) => sum
+       + item.price, 0);
+        document.getElementById("total").innerText = "$" 
+        + cartTotal;
+        showMsg(name + " aded to cart!");
+        
+      }
+
+      function addToFavorite(name, price) {
+
+        if(!favoriteItems.some(item =>item.name ===
+          name)) {
+          favoriteItems.push({name, price});
+          favTotal = favoriteItems.length;
+          document.getElementById("total-fav").innerText
+          = favTotal;
+          showMsg(`${name} added to favorites!`);
+          } else {
+            showMsg(`${name} is already in favorites!`);
+          }
+      }
+
+      function removeFromFavorite(name) {
+        functionItems = favoriteItems.filter(item =>
+          item.name !== name);
+          favTotal = favoriteItems.length;
+          document.getElementById("total-fav").innerText = 
+          favTotal;
+          showMsg(`${name} removed from favorites!`)
+      }
+
+      function deletedItem(name) {
+       cartItems = cartItems.filter(item => item.name 
+       !== name);
+        favoriteItems = favoriteItems.filter(item =>
+          item.name !== name);
+
+        cartTotal = cartItems.reduce((sum, item) => sum
+      + item.price, 0);
+        favTotal = favoriteItems.length;
+
+        document.getElementById("total").innerText ="$" 
+        + cartTotal;
+        document.getElementById("total-fav").innerText = 
+        favTotal;
+
+          deletedTotal += 1;
+
+        document.getElementById("total-deleted").innerText
+          = deletedTotal;
+
+          showMsg(`${name} deleted!`)
+              }
+
+      
+
+      let lastScroll = 0
+      const nav = document.querySelector(".container")
+
+      window.addEventListener("scroll", () => {
+        let currentScroll = window.pageYOffset
+
+        if(currentScroll > lastScroll && currentScroll > 100 ){
+          nav.style.top = "-80px"
+          nav.classList.add("hidden-bg");
+        } else if(currentScroll < lastScroll) {
+          nav.style.top = "0px"
+          nav.classList.remove("hidden-bg");
+        }
+
+        lastScroll = currentScroll
+      })
+
+      
+      const mainSections = ["menu", "about-us", "contact-us"]
+
+      const menuSubsections = ["hoodies", "full", "couples", "men"]
+
+
+      function showMainSection(id, event) {
+        event.preventDefault();
+
+       mainSections.forEach(section => {
+         document.getElementById(section).style.display = "none";
+       });
+
+       document.querySelectorAll(
+        ".sections1, .sections2, .sections3, .sections4, .sections5"
+       ).forEach(sec => {
+        sec.style.display = "none";
+       });
+
+       document.getElementById(id).style.display = "block";
+
+       if(id === "menu") {
+        menuSubsections.forEach(sub => {
+          document.getElementById(sub).style.display = "none";
+        });
+          
+         document.getElementById("hoodies").style.display = "block";
+         }
+      }
+
+      function showMenuSubsection(id, event) {
+        event.preventDefault();
+
+        menuSubsections.forEach(sub => {
+          document.getElementById(sub).style.display = "none";
+        })
+          document.getElementById(id).style.display = "block";
+
+      }
+
         const sliders =
          document.querySelectorAll(".slider-track")
 
@@ -779,6 +915,44 @@
         })
 
           }, 3000)
+
+
+          function showProduct(sectionClass, id, event) {
+            if(event) event.preventDefault();
+
+            document.querySelectorAll(
+
+            ".sections1, .sections2, .sections3, .sections4, .sections5"
+            
+               ).forEach(sec => {
+                  sec.style.display = "none";
+               });
+
+            const section = 
+            document.querySelector(sectionClass);
+            section.style.display = "flex";
+
+            section.querySelectorAll("div").forEach(item => 
+      {
+                item.style.display = "none";
+             });
+
+            document.getElementById(id).style.display = 
+       "block";
+          }
+
+
+function fakeSignUp() {
+  let name = document.getElementById('signup-name').value;
+  let email = document.getElementById('signup-email').value;
+  let pass = document.getElementById('signup-password').value;
+
+  if (name && email && pass) {
+    document.getElementById('signup-message').innerText = 'Account created successfully!';
+  } else {
+    alert('Please fill all fields');
+  }
+}
 
 
     </script>
