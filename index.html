@@ -131,7 +131,7 @@
       }
       .slider-track {
         display: flex;
-        gap: 20px;
+        gap: 5px;
         scroll-behavior: smooth;
         overflow-x: hidden;
       }
@@ -205,10 +205,9 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        gap: 30px;
         padding: 20px;
         margin: 15px;
-        overflow-x:scroll;
+        overflow-x: scroll;
         box-sizing: border-box;
         height: 600px;
         width: 1400px;
@@ -242,7 +241,7 @@
         cursor: pointer;
         position: relative;
         z-index: 1000;
-        margin: auto;
+        margin: 5px auto;
       }
       .sections1 button:hover, .sections2 button:hover,
       .sections3 button:hover, .sections4 button:hover,
@@ -279,6 +278,11 @@
             .slider {
                 width: 90%;
             }
+             .sections1, .sections2,
+             .sections3, .sections4,
+             .sections5 {
+                 width: 90%;
+             }
         }
         @media (max-width: 600px) {
             .container{
