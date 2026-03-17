@@ -842,42 +842,46 @@
       })
 
 
-     
-      
-     
-        const sliders =
-         document.querySelectorAll(".slider-track")
+        const mainSections = ["menu", "about-us", "contact-us"]
 
-        function slideRight(btn) {
-          const track = 
-          btn.parentElement.querySelector(".slider-track")
-          track.scrollLeft += 500
-        }
+      const menuSubsections = ["hoodies", "full", "couples", "men"]
 
-        function slideLeft(btn) {
-          const track = 
-          btn.parentElement.querySelector(".slider-track")
-          track.scrollLeft -= 500
-        }
 
-        let direction = 2
+      function showMainSection(id, event) {
+        event.preventDefault();
 
-        setInterval(() => {
+       mainSections.forEach(section => {
+         document.getElementById(section).style.display = "none";
+       });
 
-          sliders.forEach(track => {
+       document.querySelectorAll(
+        ".sections1, .sections2, .sections3, .sections4, .sections5"
+       ).forEach(sec => {
+        sec.style.display = "none";
+       });
 
-          const maxScroll = track.scrollWidth - track.clientWidth 
+       document.getElementById(id).style.display = "block";
 
-            const randomPosition = Math.random() * maxScroll
+       if(id === "menu") {
+        menuSubsections.forEach(sub => {
+          document.getElementById(sub).style.display = "none";
+        });
           
-          track.scrollTo({
-            left: randomPosition,
-            behavior: "smooth"
-          })
+         document.getElementById("hoodies").style.display = "block";
+         }
+      }
+
+      function showMenuSubsection(id, event) {
+        event.preventDefault();
+
+        menuSubsections.forEach(sub => {
+          document.getElementById(sub).style.display = "none";
         })
+          document.getElementById(id).style.display = "block";
 
-          }, 3000)
-
+      }      
+     
+       
 
           function showProduct(sectionClass, id, event) {
             if(event) event.preventDefault();
