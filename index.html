@@ -892,13 +892,13 @@
 
         function slideRight(btn) {
           const track = 
-          btn.parentElement.querySelector(".slider-track")
+          btn.closet(".slider").querySelector(".slider-track")
           track.scrollLeft += 300
         }
 
         function slideLeft(btn) {
           const track = 
-          btn.parentElement.querySelector(".slider-track")
+          btn.closet(".slider").querySelector(".slider-track")
           track.scrollLeft -= 300
         }
 
@@ -908,14 +908,17 @@
 
           sliders.forEach(track => {
 
-          const maxScroll = track.scrollWidth - track.clientWidth 
+          const maxScroll = track.scrollWidth - 
+     track.clientWidth 
 
+      if(maxScroll > 0) {
             const randomPosition = Math.random() * maxScroll
           
           track.scrollTo({
             left: randomPosition,
             behavior: "smooth"
           })
+      }
         })
 
           }, 3000)
