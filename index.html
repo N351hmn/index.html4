@@ -826,23 +826,7 @@
 
       
 
-      let lastScroll = 0
-      const nav = document.querySelector(".container")
-
-      window.addEventListener("scroll", () => {
-        let currentScroll = window.pageYOffset
-
-        if(currentScroll > lastScroll && currentScroll > 100 ){
-          nav.style.top = "-80px"
-          nav.classList.add("hidden-bg");
-        } else if(currentScroll < lastScroll) {
-          nav.style.top = "0px"
-          nav.classList.remove("hidden-bg");
-        }
-
-        lastScroll = currentScroll
-      })
-
+     
       
       const mainSections = ["menu", "about-us", "contact-us"]
 
