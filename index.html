@@ -881,32 +881,41 @@
 
       }      
      
-       
+        const sliders =
+         document.querySelectorAll(".slider-track")
 
-          function showProduct(sectionClass, id, event) {
-            if(event) event.preventDefault();
+        function slideRight(btn) {
+          const track = 
+          btn.parentElement.querySelector(".slider-track")
+          track.scrollLeft += 500
+        }
 
-            document.querySelectorAll(
+        function slideLeft(btn) {
+          const track = 
+          btn.parentElement.querySelector(".slider-track")
+          track.scrollLeft -= 500
+        }
 
-            ".sections1, .sections2, .sections3, .sections4, .sections5"
-            
-               ).forEach(sec => {
-                  sec.style.display = "none";
-               });
+        let direction = 2
 
-            const section = 
-            document.querySelector(sectionClass);
-            section.style.display = "flex";
+        setInterval(() => {
 
-            section.querySelectorAll("div").forEach(item => 
-      {
-                item.style.display = "none";
-             });
+          sliders.forEach(track => {
 
-            document.getElementById(id).style.display = 
-       "block";
-          }
+          const maxScroll = track.scrollWidth - track.clientWidth 
 
+            const randomPosition = Math.random() * maxScroll
+          
+          track.scrollTo({
+            left: randomPosition,
+            behavior: "smooth"
+          })
+        })
+
+          }, 3000)
+
+
+         
 
 function fakeSignUp() {
   let name = document.getElementById('signup-name').value;
