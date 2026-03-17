@@ -914,6 +914,29 @@
 
           }, 3000)
 
+         function showProduct(sectionClass, id, event) {
+            if(event) event.preventDefault();
+
+            document.querySelectorAll(
+
+            ".sections1, .sections2, .sections3, .sections4, .sections5"
+            
+               ).forEach(sec => {
+                  sec.style.display = "none";
+               });
+
+            const section = 
+            document.querySelector(sectionClass);
+            section.style.display = "flex";
+
+            section.querySelectorAll("div").forEach(item => 
+      {
+                item.style.display = "none";
+             });
+
+            document.getElementById(id).style.display = 
+       "block";
+          }
 
          
 
