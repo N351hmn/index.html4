@@ -886,29 +886,32 @@
 
       }
 
-        const sliders =
+       document.addEventListener("DOMContentLoaded", () => {
+           
+          const sliders =
          document.querySelectorAll(".slider-track")
 
         function slideRight(btn) {
           const track = 
           btn.parentElement.querySelector(".slider-track")
-          track.scrollLeft += 300
+         if(track) track.scrollLeft += 300
         }
 
         function slideLeft(btn) {
           const track = 
           btn.parentElement.querySelector(".slider-track")
-          track.scrollLeft -= 300
+           if(track) track.scrollLeft -= 300
         }
-
-        let direction = 1
 
         setInterval(() => {
 
           sliders.forEach(track => {
 
-          const maxScroll = track.scrollWidth - track.clientWidth 
+          const maxScroll = track.scrollWidth - 
+        track.clientWidth 
 
+              if(maxScroll <= 0) return;
+              
             const randomPosition = Math.random() * maxScroll
           
           track.scrollTo({
@@ -918,6 +921,11 @@
         })
 
           }, 3000)
+
+           window.slideRight = slideRight;
+           window.slideLeft = slideLeft;
+           
+       });
 
 
           function showProduct(sectionClass, id, event) {
