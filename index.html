@@ -745,7 +745,7 @@
 </section>
     </div>
 
-   <script>
+  <script>
       
       let cartTotal = 0;
       let favTotal= 0;
@@ -884,38 +884,29 @@
 
       }
 
-       document.addEventListener("DOMContentLoaded", () => {
-           
-          const sliders = btn.closest('.slider');
-           const track =
+        const sliders =
          document.querySelectorAll(".slider-track")
 
         function slideRight(btn) {
           const track = 
           btn.parentElement.querySelector(".slider-track")
-         if(track) track.scrollLeft += 300
+          track.scrollLeft += 300
         }
 
         function slideLeft(btn) {
-          const track = btn.closest('.slider');
-           const track =
+          const track = 
           btn.parentElement.querySelector(".slider-track")
-           if(track) track.scrollLeft -= 300
+          track.scrollLeft -= 300
         }
+
+        let direction = 1
 
         setInterval(() => {
 
-          sliders.forEach(sliier => {
+          sliders.forEach(track => {
 
-              const track = 
-        slider.querySelector(".slider-track");
-              if(!track) return;
-              
-          const maxScroll = track.scrollWidth - 
-        track.clientWidth 
+          const maxScroll = track.scrollWidth - track.clientWidth 
 
-              if(maxScroll <= 0) return;
-              
             const randomPosition = Math.random() * maxScroll
           
           track.scrollTo({
@@ -925,11 +916,6 @@
         })
 
           }, 3000)
-
-           window.slideRight = slideRight;
-           window.slideLeft = slideLeft;
-           
-       });
 
 
           function showProduct(sectionClass, id, event) {
@@ -968,6 +954,7 @@ function fakeSignUp() {
     alert('Please fill all fields');
   }
 }
+
 
     </script>
 </body>
